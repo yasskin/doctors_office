@@ -1,0 +1,21 @@
+<h1><%= @specialty.name() %></h1>
+
+<% if @specialty.doctors().any?() %>
+  <h3>Here are all the doctors that specialize in that specialty</h3>
+  <ul>
+    <% @specialty.doctors().each() do |doctor| %>
+      <li><%= doctor.name() %></a></li>
+      <% end %>
+  </ul>
+    <% else %>
+      <p>There are no doctors with this specialty!</p>
+    <% end %>
+
+<h3>Add a doctor to <%= @specialty.name() %></h3>
+
+<form action="/doctors" method="post">
+  <input id="specialty_id" name="specialty_id" type="hidden" value="<%= @specialty.id() %>">
+    <label for="name">Doctor Name</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Add Doctor</button>
+</form>

@@ -1,0 +1,19 @@
+<h1>Our Specialized Care</h1>
+<% if @specialties.any?() %>
+  <h3>Here are our specialties:</h3>
+
+  <ul>
+    <% @specialties.each() do |specialty| %>
+      <li><a href="/specialties/<%= specialty.id()%>"><%= specialty.name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+    <p>There are none yet!</p>
+<% end %>
+
+<form action="/specialties" method="post">
+  <label for="specialty_name">Specialty Name</label>
+  <input id="specialty_name" name="specialty_name" type="text">
+  <button type="submit">Add</button>
+</form>
