@@ -30,4 +30,13 @@ class Patient
     self.id().==(another_patient.id()).&(self.patient_name().==(another_patient.patient_name())).&(self.patient_birthday().==(another_patient.patient_birthday())).&(self.doctor_id().==(another_patient.doctor_id()))
   end
 
+  define_singleton_method(:find) do |id|
+    found_patient = nil
+    Patient.all().each() do |patient|
+      if patient.id().==(id)
+        found_patient = patient
+      end
+    end
+    found_patient
+  end
 end
