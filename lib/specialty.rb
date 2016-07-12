@@ -16,4 +16,10 @@ class Specialty
     end
     specialties
   end
+
+  define_method(:==) do |another_specialty|
+    self.id().==(another_specialty.id()).&(self.name().==(another_specialty.name()))
+  end
+
+
 end
